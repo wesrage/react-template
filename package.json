@@ -2,7 +2,7 @@
   "name": "react-template",
   "version": "0.1.0",
   "description": "React template featuring webpack with hot module replacement",
-  "license": "UNLICENSED",
+  "license": "ISC",
   "scripts": {
      "dev": "node index",
      "test": "mocha --watch --compilers js:babel-core/register \"src/**/*.test.js\""
