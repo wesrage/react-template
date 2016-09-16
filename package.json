@@ -4,8 +4,8 @@
   "description": "React template featuring webpack with hot module replacement",
   "license": "ISC",
   "scripts": {
-     "dev": "node index",
-     "test": "mocha --watch --compilers js:babel-core/register \"src/**/*.test.js\""
+    "start": "webpack-dashboard -- node index",
+    "test": "mocha --watch --compilers js:babel-core/register \"src/**/*.test.js\""
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
     "file-loader": "^0.8.5",
     "mocha": "^2.4.5",
     "webpack": "^1.12.14",
+    "webpack-dashboard": "^0.1.8",
     "webpack-dev-middleware": "^1.5.1",
     "webpack-hot-middleware": "^2.10.0"
   },
