@@ -1,7 +1,9 @@
 {
-   "ecmaFeatures": {
-      "jsx": true,
-      "modules": true
+   "parserOptions": {
+      "ecmaFeatures": {
+         "jsx": true,
+         "modules": true
+      }
    },
    "env": {
       "browser": true,
@@ -12,11 +14,31 @@
    "parser": "babel-eslint",
    "plugins": [
       "babel",
+      "import",
       "react"
    ],
    "rules": {
       "comma-dangle": [1, "always-multiline"],
+      "import/no-unresolved": 2,
+      "import/named": 2,
+      "import/default": 2,
+      "import/namespace": 2,
+      "import/export": 2,
+      "import/no-mutable-exports": 2,
+      "import/no-commonjs": 2,
+      "import/no-amd": 2,
+      "import/imports-first": 2,
+      "import/no-duplicates": 2,
+      "import/newline-after-import": 1,
       "indent": [2, 3, { "SwitchCase": 1 }],
+      "react/jsx-indent-props": [2, 3],
       "react/jsx-space-before-closing": 0
+   },
+   "settings": {
+      "import/resolver": {
+         "webpack": {
+            "config": "webpack.config.dev.babel.js"
+         }
+      }
    }
 }
