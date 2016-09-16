@@ -1,24 +1,19 @@
 require('./index.html');
 import React from 'react';
 import { render } from 'react-dom';
-import { createStore } from 'redux';
+import { configureStore } from './store';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
-
 import routes from './routes';
-import reducers from './store/reducers';
 
-const target = document.getElementById('root');
-
-const store = createStore(reducers);
-
-const history = syncHistoryWithStore(browserHistory, store);
+const store = configureStore();
 
 const component = (
    <Provider store={store}>
-      <Router routes={routes} history={history}/>
+      <Router routes={routes} history={browserHistory}/>
    </Provider>
 );
+
+const target = document.getElementById('root');
 
 render(component, target);
