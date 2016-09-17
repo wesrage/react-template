@@ -15,7 +15,7 @@ export function configureStore(initialState) {
       initialState,
       compose(
          applyMiddleware(...middlewares),
-         window.devToolsExtension && window.devToolsExtension()
+         window.devToolsExtension && window.devToolsExtension(),
       )
    );
 
