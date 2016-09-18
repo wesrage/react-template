@@ -4,13 +4,45 @@
   "description": "React template featuring webpack with hot module replacement",
   "license": "ISC",
   "scripts": {
-    "start": "webpack-dashboard -- node index",
+    "start": "concurrently --kill-others \"npm run dev\" \"npm run dev-api\"",
+    "build": "webpack --verbose --colors --display-error-details --config webpack.config.prod.babel.js",
+    "dev": "better-npm-run dev",
+    "dev-api": "better-npm-run dev-api",
     "test": "jest --watch"
+  },
+  "betterScripts": {
+    "dev": {
+      "command": "webpack-dashboard -- node index",
+      "env": {
+        "API_HOST": "localhost",
+        "API_PORT": 3030,
+        "HTTP_PORT": 3000
+      }
+    },
+    "dev-api": {
+      "command": "node api",
+      "env": {
+        "API_HOST": "localhost",
+        "API_PORT": 3030
+      }
+    },
+    "prod-api": {
+      "command": "node api",
+      "env": {
+        "API_HOST": "localhost",
+        "API_PORT": 8080,
+        "NODE_ENV": "production"
+      }
+    }
   },
   "repository": {
     "type": "git",
     "url": "https://bitbucket.org/wesleywaldner/react-template.git"
   },
+  "moduleRoots": [
+    "api",
+    "src"
+  ],
   "devDependencies": {
     "babel-core": "^6.14.0",
     "babel-eslint": "^6.1.2",
@@ -23,6 +55,8 @@
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-1": "^6.13.0",
     "babel-register": "^6.14.0",
+    "better-npm-run": "0.0.11",
+    "concurrently": "^2.2.0",
     "eslint": "^3.5.0",
     "eslint-config-airbnb": "^11.1.0",
     "eslint-import-resolver-webpack": "^0.6.0",
@@ -33,6 +67,7 @@
     "express": "^4.14.0",
     "file-loader": "^0.9.0",
     "jest": "^15.1.1",
+    "piping": "^1.0.0-rc.4",
     "react-test-renderer": "^15.3.1",
     "webpack": "^1.13.2",
     "webpack-dashboard": "^0.1.8",
@@ -40,6 +75,9 @@
     "webpack-hot-middleware": "^2.12.2"
   },
   "dependencies": {
+    "body-parser": "^1.15.2",
+    "compression": "^1.6.2",
+    "http-proxy": "^1.15.1",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-helmet": "^3.1.0",
