@@ -1,38 +1,20 @@
-import path from 'path';
 import webpack from 'webpack';
+import baseConfig from './webpack.config.base';
 
 export default {
-   entry: [
-      './src/index',
-   ],
-   output: {
-      path: path.join(__dirname, 'dist'),
-      filename: 'main.js',
-      publicPath: '/static/',
-   },
-   module: {
-      loaders: [
-         { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel' },
-         { test: /\.html$/, loader: 'file?name=[name].html' },
-      ],
-   },
+   ...baseConfig,
    plugins: [
-      new webpack.optimize.OccurrenceOrderPlugin(),
+      ...baseConfig.plugins,
       new webpack.DefinePlugin({
          'process.env': {
-            NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+            NODE_ENV: JSON.stringify('production'),
          },
       }),
+      new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({
-         compressor: {
+         compress: {
             warnings: false,
          },
       }),
    ],
-   resolve: {
-      modulesDirectories: [
-         'node_modules',
-      ],
-      extensions: ['', '.js', '.jsx'],
-   },
 };

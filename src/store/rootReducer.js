@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import substore from './substore/reducer';
+import substore from './substore';
 
 export default combineReducers({
    substore,
