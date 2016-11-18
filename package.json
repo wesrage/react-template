@@ -1,7 +1,7 @@
 {
   "name": "react-template",
   "version": "0.1.0",
-  "description": "React template featuring webpack with hot module replacement",
+  "description": "React, Redux, Babel, API server, hot module replacement",
   "license": "ISC",
   "scripts": {
     "start": "concurrently --kill-others \"npm run dev\" \"npm run dev-api\"",
@@ -13,6 +13,14 @@
   "betterScripts": {
     "dev": {
       "command": "node index",
+      "env": {
+        "API_HOST": "localhost",
+        "API_PORT": 3030,
+        "HTTP_PORT": 3000
+      }
+    },
+    "dash": {
+      "command": "webpack-dashboard -- node index",
       "env": {
         "API_HOST": "localhost",
         "API_PORT": 3030,
@@ -37,7 +45,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/wesleywaldner/react-template.git"
+    "url": "https://github.com/wesleywaldner/react-template.git"
   },
   "moduleRoots": [
     "api",
