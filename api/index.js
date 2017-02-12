@@ -1,4 +1,4 @@
-/* eslint-disable import/no-commonjs */
+/* eslint-disable global-require */
 if (process.env.NODE_ENV !== 'production') {
    require('piping')({ hook: true });
 }

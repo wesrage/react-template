@@ -1,22 +1,27 @@
+/* eslint-disable global-require */
+/* eslint-disable import/no-extraneous-dependencies */
 import {
    applyMiddleware,
    compose,
    createStore,
 } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import rootReducer from './rootReducer';
 
 export function configureStore(initialState) {
+   const composeEnhancers = (__DEVELOPMENT__)
+      ? composeWithDevTools({})
+      : compose;
    const middlewares = [
       thunk,
    ];
    const store = createStore(
       rootReducer,
       initialState,
-      compose(
+      composeEnhancers(
          applyMiddleware(...middlewares),
-         window.devToolsExtension && window.devToolsExtension(),
-      )
+      ),
    );
 
    if (module.hot) {

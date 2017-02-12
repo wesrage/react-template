@@ -1,9 +1,10 @@
-import './index.html';
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import { render } from 'react-dom';
-import { configureStore } from './store';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
+import './index.html';
+import { configureStore } from './store';
 import routes from './routes';
 
 const store = configureStore();

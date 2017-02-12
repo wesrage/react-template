@@ -1,4 +1,5 @@
 import path from 'path';
+import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 export default {
@@ -10,46 +11,53 @@ export default {
       filename: 'main.js',
    },
    module: {
-      loaders: [
+      rules: [
          {
             test: /\.jsx?$/,
             exclude: /node_modules/,
-            loader: 'babel',
-            query: {
-               presets: [
-                  ['es2015', { modules: false }],
-                  'react',
-                  'stage-0',
-               ],
-               env: {
-                  development: {
-                     presets: ['react-hmre'],
+            use: {
+               loader: 'babel-loader',
+               options: {
+                  presets: [
+                     ['es2015', { modules: false }],
+                     'react',
+                     'stage-0',
+                  ],
+                  env: {
+                     development: {
+                        presets: ['react-hmre'],
+                     },
                   },
                },
             },
          }, {
             test: /\.css$/,
-            loader: ExtractTextPlugin.extract({
-               fallbackLoader: 'style',
-               loader: ['css'],
+            use: ExtractTextPlugin.extract({
+               fallback: 'style-loader',
+               use: 'css-loader',
             }),
          }, {
             test: /\.html$/,
-            loader: 'file',
-            query: {
-               name: '[name].[ext]',
+            use: {
+               loader: 'file-loader',
+               options: {
+                  name: '[name].[ext]',
+               },
             },
          }, {
             test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-            loader: 'file',
+            use: 'file-loader',
          }, {
             test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-            loader: 'file',
+            use: 'file-loader',
          },
       ],
    },
    plugins: [
-      new ExtractTextPlugin('bundle.css'),
+      new ExtractTextPlugin({
+         filename: 'bundle.css',
+      }),
+      new webpack.NoEmitOnErrorsPlugin(),
    ],
    resolve: {
       modules: ['node_modules'],

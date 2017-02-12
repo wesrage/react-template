@@ -12,7 +12,9 @@ export default {
    plugins: [
       ...baseConfig.plugins,
       new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoErrorsPlugin(),
+      new webpack.DefinePlugin({
+         __DEVELOPMENT__: true,
+      }),
       new DashboardPlugin(),
    ],
    watch: true,
