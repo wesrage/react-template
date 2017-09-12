@@ -20,8 +20,8 @@ if (API_PORT) {
       if (err) {
          console.error(err);
       }
-      console.info('----\n==> 🌎  API is running on port %s', API_PORT);
-      console.info('==> 💻  Send requests to http://%s:%s', API_HOST, API_PORT);
+      console.info(`----\n==> 🌎  API is running on port ${API_PORT}`);
+      console.info(`==> 💻  Send requests to http://${API_HOST}:${API_PORT}`);
    });
 } else {
    console.error('==>     ERROR: No API_PORT environment variable has been specified');
