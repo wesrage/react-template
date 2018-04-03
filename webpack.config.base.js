@@ -1,6 +1,6 @@
-import path from 'path';
-import webpack from 'webpack';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import path from 'path'
+import webpack from 'webpack'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 export default {
    entry: [
@@ -19,9 +19,9 @@ export default {
                loader: 'babel-loader',
                options: {
                   presets: [
-                     ['es2015', { modules: false }],
+                     ['env', { modules: false }],
                      'react',
-                     'stage-0',
+                     'stage-1',
                   ],
                   env: {
                      development: {
@@ -63,4 +63,5 @@ export default {
       modules: ['node_modules'],
       extensions: ['.js', '.jsx'],
    },
-};
+   mode: 'development',
+}

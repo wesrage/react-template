@@ -1,20 +1,6 @@
 {
    "presets": [
-      "es2015",
-      "react",
+      "env",
       "stage-1"
-   ],
-   "plugins": [
-      "transform-decorators-legacy",
-      ["typecheck", {
-         "disable": {
-            "production": true
-         }
-      }]
-   ],
-   "env": {
-      "development": {
-         "presets": ["react-hmre"]
-      }
-   }
+   ]
 }

@@ -1,6 +1,5 @@
-import webpack from 'webpack';
-import DashboardPlugin from 'webpack-dashboard/plugin';
-import baseConfig from './webpack.config.base';
+import webpack from 'webpack'
+import baseConfig from './webpack.config.base'
 
 export default {
    ...baseConfig,
@@ -15,7 +14,6 @@ export default {
       new webpack.DefinePlugin({
          __DEVELOPMENT__: true,
       }),
-      new DashboardPlugin(),
    ],
    watch: true,
-};
+}

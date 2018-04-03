@@ -1,20 +1,20 @@
-/* eslint-disable react/jsx-filename-extension */
-import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import { Router, browserHistory } from 'react-router';
-import './index.html';
-import { configureStore } from './store';
-import routes from './routes';
+import React from 'react'
+import { render } from 'react-dom'
+import { Router, Route, Switch } from 'react-router-dom'
+import { createBrowserHistory } from 'history'
+import qhistory from 'qhistory'
+import { stringify, parse } from 'qs'
+import { ThemeProvider } from 'styled-components'
+import './index.html'
 
-const store = configureStore();
+const browserHistory = qhistory(createBrowserHistory(), stringify, parse)
 
 const component = (
-   <Provider store={store}>
-      <Router routes={routes} history={browserHistory}/>
-   </Provider>
-);
+   <Router history={browserHistory}>
+      <h1>Hello World</h1>
+   </Router>
+)
 
-const target = document.getElementById('root');
+cons = document.getElementById('root')
 
-render(component, target);
+render(component, target)
